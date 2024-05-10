@@ -1,1 +1,148 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+    background-color: whitesmoke;
+    font-family: 'Roboto', Arial, sans-serif;
+    margin-top: 80px;
+    color: rgb(85, 84, 84);
+}
+
+section.jumbotron h1{
+    font-family: 'Roboto', Arial, sans-serif;
+} 
+
+h1 {
+    font-size: 1rem;
+    font-family: 'Nanum Gothic', serif;
+    /* color: black; */
+}
+
+strong {
+    font-weight: bold;
+}
+
+.navbar-nav .nav-item {
+    width: 100%;
+}
+
+nav {
+    height: 80px;
+    font-size: 1.2rem;
+}
+
+.dropdown-menu {
+    padding:10%;
+    max-height: 600px;
+    width:auto; 
+    overflow-y: auto;
+    overflow-x: hidden; 
+/*     column-count: 2; 
+    column-gap: 30px; */
+    
+}
+
+li.nav-item {
+    margin-right: 4em;
+}  
+
+a.nav-link {
+    color: rgb(146, 21, 57);
+}
+
+a.nav-link:hover {
+    color: whitesmoke;
+}
+
+a.nav-link.submenu{
+    color: black;
+}
+
+a.nav-link.submenu:visited{
+    color: black;
+}
+
+a.nav-link.submenu:hover {
+    color: rgb(146, 21, 57);
+}
+.modal {
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(1.1);
+    transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+}
+
+.show-modal {
+    position: absolute; 
+    top: 50%;
+    left:50%;
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1.0);
+    transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+}
+
+.modal-content {
+    position: absolute;
+    left: 50%; 
+    transform: translate(-50%, -50%);
+    background-color: rgb(141, 40, 70);
+    padding: 1rem 1.5rem;
+    width: 600px;
+    border-radius: 0.5rem;
+}
+
+.card-header img {
+    width: 100%;
+    height: 430px;
+    object-fit: cover;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    padding: 20px;
+    min-height: 125px;
+}
+
+h4{
+    font-size:1rem;
+    font-weight: bold;
+}
+
+footer {
+    color: rgb(146, 21, 57);
+    font-size: 1rem;
+    text-align: center; 
+   
+}
+
+a.more {
+    text-decoration: none;
+    color: rgb(85, 84, 84);
+}
+
+div.card {
+    height: auto;
+   background-color: white; 
+    width: 100%;
+} 
+
+div.card img{
+    padding:5%;
+}
+
+/* 
+.imgProject:hover {
+    opacity: .5;
+}
+
+.nosotros:hover {
+    transform: scale(1.5);
+}
+
+li a.dropdown-item {
+    font-size: 0.8rem;
+}
+
+.btn-custom {
+    background-color: rgb(173, 160, 144);
+}*/

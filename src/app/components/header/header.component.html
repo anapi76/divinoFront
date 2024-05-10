@@ -1,0 +1,34 @@
+<nav class="navbar navbar-expand-md bg-dark fixed-top navbar-dark">
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-center" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+                @for(item of menu;track item;let i=$index){
+                @if(item.content.length==0){
+                <li class="nav-item">
+                    <a class="nav-link" routerLink={{item.route}} routerLinkActive="active">{{item.title}}</a>
+                </li>
+                }@else {
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">{{item.title}}</a>
+                    <ul class="dropdown-menu">
+                        @for(it of item.content;track it;let j=$index){
+                        <li class="nav-item">
+                            <a class="nav-link submenu" routerLink="{{item.route}}/{{it.id}}"
+                                routerLinkActive="active" (click)="setSelectedId(it.id)">{{it.title}}</a>
+                        </li>
+                        }
+                    </ul>
+                </li>
+                }
+                }
+            </ul>
+        </div>
+    </div>
+</nav>
+
+

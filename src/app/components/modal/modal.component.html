@@ -1,0 +1,19 @@
+<div [ngClass]="modal">
+    <div class="modal-content">
+        <div class="container">
+            <div class="card">
+             <div class="card-header">
+                    <img src={{logoModal}} alt="" />
+                </div> 
+                <div class="card-body">
+                    <p class="tag">{{question}}</p>
+                    <div>
+                        <h4 (click)="isAdult()">{{adultModal}}</h4>
+                        <h4 (click)="isNotAdult()">{{notAdultModal}}</h4>
+                    </div>
+                    <p class="tag">{{nameModal}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
