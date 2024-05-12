@@ -1,9 +1,11 @@
 <section class="news container mt-5 pb-5">
-  <!--   <p>{{name}}</p> -->
     <div class="row">
+        <h1 class="display-6 fw-bold"><a href="{{web}}" title="{{web}}" target="_blank">{{name}}</a></h1>
+        <p id="creacion">{{creacion}}</p>
         @for(item of descriptions;track item;let i=$index){
-        <article class="col-md-4 col-sm-12">
-            <app-card [attr]="'card' + (i + 1)" [imageCard]="item.imageCard" [title]="item.title" [description]="item.description" ></app-card>
+        <article class="col-md-3 col-sm-12">
+            <app-card [attr]="'card' + (i + 1)" [imageCard]="item.imageCard" [title]="item.title"
+                [description]="item.description"></app-card>
         </article>
         }
     </div>

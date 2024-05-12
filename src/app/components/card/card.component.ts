@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Bodegas } from '../../models/response.interfaceDenominacion';
 
 @Component({
   selector: 'app-card',
@@ -12,6 +13,6 @@ export class CardComponent {
   @Input() description:string='';
   @Input() imageCard:string='';
   @Input() attr:string='';
-  //@Input() descriptions:{title:string,description:string}[]=[];
-
+  @Input() bodegas:Bodegas[]=[];
+  
 }

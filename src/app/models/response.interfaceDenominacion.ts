@@ -14,12 +14,15 @@ export interface Result {
     creacion:          number | null;
     web:               null | string;
     imagen:            string;
+    imagen_historia:   string;
+    imagen_uva:   string;
+    logo:              string;
     url:               string;
     historia:          string;
     descripcion:       string;
     descripcion_vinos: string;
     region:            string;
-    bodegas:           string[];
+    bodegas:           Bodegas[];
     uvas_permitidas:   string[];
 }
 

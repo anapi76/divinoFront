@@ -1,15 +1,14 @@
 import { Component } from '@angular/core';
 import { DataService } from '../../services/data.service';
 import { Subscription } from 'rxjs';
-import { Result } from '../../models/response.interfaceDenominacion';
-import { JumbotronComponent } from '../../components/jumbotron/jumbotron.component';
+import { Bodegas, Result } from '../../models/response.interfaceDenominacion';
 import { ContentComponent } from '../../components/content/content.component';
 
 
 @Component({
   selector: 'app-denominaciones',
   standalone: true,
-  imports: [JumbotronComponent, ContentComponent],
+  imports: [ContentComponent],
   templateUrl: './denominaciones.component.html',
   styleUrl: './denominaciones.component.css'
 })
@@ -20,8 +19,9 @@ export class DenominacionesComponent {
   public urlDenominacion: string = 'http://localhost:8000/denominacion/' + this.selectedId;
   public denominacion: Result[] = [];
   public name: string = 'DO Valencia';
-  public image: string = '';
-  public bgColor: string = 'white-smoke';
+  public web: string | null = '';
+  public bodegas: Bodegas[] = [];
+  public creacion: string | null = '';
   public descriptions: { title: string, description: string, imageCard: string }[] = [];
 
   public constructor(public service: DataService) {
@@ -38,10 +38,15 @@ export class DenominacionesComponent {
     this.service.getResponseDenominacion(url).subscribe(response => {
       this.denominacion = response.results;
       this.name = this.denominacion[0].nombre;
+      this.web = this.denominacion[0].web;
+      this.creacion = "Fecha de creación: " + this.denominacion[0].creacion + '';
+      this.bodegas = this.denominacion[0].bodegas;
       this.descriptions = [];
-      this.descriptions.push({ title: 'Historia', description: this.denominacion[0].historia, imageCard:"" });
-      this.descriptions.push({ title: 'Región', description: this.denominacion[0].descripcion, imageCard: "http://localhost:8000/" + this.denominacion[0].imagen  });
-      this.descriptions.push({ title: 'Tipo de vinos', description: this.denominacion[0].descripcion_vinos, imageCard: "" });
+      this.descriptions.push({ title: 'Región', description: this.denominacion[0].descripcion, imageCard: "http://localhost:8000/" + this.denominacion[0].imagen });
+
+      this.descriptions.push({ title: 'Historia', description: this.denominacion[0].historia, imageCard: "http://localhost:8000/" + this.denominacion[0].imagen_historia });
+      this.descriptions.push({ title: 'Tipo de vinos', description: this.denominacion[0].descripcion_vinos, imageCard: "http://localhost:8000/" + this.denominacion[0].logo });
+      this.descriptions.push({ title: 'Uvas permitidas', description: this.denominacion[0].uvas_permitidas.join(', '), imageCard: "http://localhost:8000/" + this.denominacion[0].imagen_uva });
     })
   }
 
