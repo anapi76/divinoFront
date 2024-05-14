@@ -18,9 +18,11 @@ export class HomeComponent {
   public notAdultModal: string = 'No';
   public modal: string = 'show-modal';
   public bgColor:string="white-smoke";
-
+  public view:string='home';
+  
   public isAdult(): void {
     this.modal = 'modal';
+
   }
 
 }

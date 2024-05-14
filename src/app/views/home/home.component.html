@@ -1,8 +1,10 @@
-<main >
-<app-jumbotron [image]="image" [bgColor]="bgColor"></app-jumbotron>
-<app-content></app-content>
-<app-modal (closeModal)="isAdult()" [modal]='modal' [nameModal]='nameModal' [question]='question' [adultModal]='adultModal' [notAdultModal]='notAdultModal'></app-modal>     
-</main>
+    <main >
+        <app-jumbotron [image]="image" [bgColor]="bgColor"></app-jumbotron>
+        <app-content [view]="view"></app-content>
+        <app-modal (closeModal)="isAdult()" [modal]='modal' [nameModal]='nameModal' [question]='question' [adultModal]='adultModal' [notAdultModal]='notAdultModal' ></app-modal>     
+    </main>
+
+
 
 
 

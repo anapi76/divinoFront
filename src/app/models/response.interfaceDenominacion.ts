@@ -28,6 +28,6 @@ export interface Result {
 
 export interface Bodegas {
     nombre: string;
-    url:    string;
+    web:    string;
 }
 

@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { DataService } from '../../services/data.service';
 import { Subscription } from 'rxjs';
 import { ContentComponent } from '../../components/content/content.component';
-import { Result, Vino } from '../../models/response.interfaceBodega';
+import { Result, Vino } from '../../models/response.interfaceBodega'
+
 
 @Component({
   selector: 'app-bodegas',
@@ -17,28 +18,34 @@ export class BodegasComponent {
   public selectedId: number | null = 1;
   public urlBodega: string = 'http://localhost:8000/bodega/' + this.selectedId;
   public bodega: Result[] = [];
-  public name: string = 'DO Valencia';
-  public web: string | null = '';
-  public vinos: Vino[] = [];
+  public vinosDo: Vino[] = [];
+  public vinos: { name: string, image: string, url: string }[] = [];
+  public view: string = 'bodega';
 
   public constructor(public service: DataService) {
     this.idSubscription = this.service.getSelectedId().subscribe(id => {
       this.selectedId = id;
       if (id !== null) {
         this.urlBodega = 'http://localhost:8000/bodega/' + id;
-        this.getBodegas(this.urlBodega);
+        this.getBodega(this.urlBodega);
       }
     });
   }
 
-  public getBodegas(url: string): void {
+  public getBodega(url: string): void {
     this.service.getResponseBodega(url).subscribe(response => {
       this.bodega = response.results;
-     this.name = this.bodega[0].nombre;
-      this.web = this.bodega[0].web;
-      this.vinos = this.bodega[0].vinos;
-    
+      this.vinos=[];
+      this.vinosDo = this.bodega[0].vinos;
+      this.vinosDo.map(vino => {
+        this.service.getResponseVino("http://localhost:8000/" + vino.url).subscribe(responseVino => {
+          this.vinos.push({ name: responseVino.results[0].nombre, image: "http://localhost:8000/" +responseVino.results[0].imagen, url: "http://localhost:8000/" + responseVino.results[0].url });
+        })
+      })
     })
   }
+
+
+
 
 }

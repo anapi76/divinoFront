@@ -14,17 +14,13 @@ export class ModalComponent {
   @Input() question: string = '¿Tienes más de 18 años?';
   @Input() adultModal:string='Si'; 
   @Input() notAdultModal: string = 'No';
-
   @Input() modal: string = '';
-
-  public openModal(): void {
-    this.modal = 'show-modal';
-  }
 
   @Output() closeModal = new EventEmitter<string>();
   public isAdult(): void {
     this.closeModal.emit('modal');
   }
+
   public isNotAdult(): void {
     window.location.href = 'https://www.google.com';
     this.closeModal.emit('modal');

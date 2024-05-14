@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { DataService } from '../../services/data.service';
 
@@ -15,7 +15,7 @@ export class HeaderComponent {
     this.getDenominaciones(this.urlDenominacion);
     this.getBodegas(this.urlBodega);
   }
-
+  
   public urlDenominacion: string = 'http://localhost:8000/denominacion';
   public urlBodega: string = 'http://localhost:8000/bodega';
   public denominaciones: { title: string, id: number }[] = [];

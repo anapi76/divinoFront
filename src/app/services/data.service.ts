@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { ResponseDenominacion } from '../models/response.interfaceDenominacion';
 import { ResponseBodega } from '../models/response.interfaceBodega';
+import { ResponseVino } from '../models/response.interfaceVino';
 
 
 @Injectable({
@@ -21,6 +22,10 @@ export class DataService {
 
   public getResponseBodega(url:string): Observable<ResponseBodega> {
     return this.http.get<ResponseBodega>(url);
+  }
+
+  public getResponseVino(url:string): Observable<ResponseVino> {
+    return this.http.get<ResponseVino>(url);
   }
 
   public getSelectedId(): Observable<number|null>{

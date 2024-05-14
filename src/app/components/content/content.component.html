@@ -1,7 +1,11 @@
+@if (view=='denominacion') {
 <section class="news container mt-5 pb-5">
     <div class="row">
         <h1 class="display-6 fw-bold"><a href="{{web}}" title="{{web}}" target="_blank">{{name}}</a></h1>
         <p id="creacion">{{creacion}}</p>
+        @for (item of bodegasDo; track $index) {
+        <p id="bodegas"><a href={{item.web}} target="_blank" title={{item.nombre}}>{{item.nombre}}</a></p>
+        }
         @for(item of descriptions;track item;let i=$index){
         <article class="col-md-3 col-sm-12">
             <app-card [attr]="'card' + (i + 1)" [imageCard]="item.imageCard" [title]="item.title"
@@ -10,3 +14,42 @@
         }
     </div>
 </section>
+}@else if(view=='home'){
+    <section class="news container mt-5 pb-5">
+        <div class="row">
+        </div>
+    </section>
+}
+@else if(view=='bodega'){
+<section class="news container mt-5 pb-5">
+    <div class="row">
+        @if(bodega[0].web !=null){
+            <h1 class="display-6 fw-bold"><a href="{{bodega[0].web}}" title="{{bodega[0].web}}" target="_blank">{{bodega[0].nombre}}</a></h1>
+        }@else {
+            <h1 class="display-6 fw-bold"><a href="" title="" target="_blank">{{bodega[0].nombre}}</a></h1>  
+        }
+        <p>{{bodega[0].denominacion}}</p>
+        <p>{{bodega[0].direccion}}</p>
+        <p>{{bodega[0].poblacion}}</p>
+        <p>{{bodega[0].provincia}}</p>
+        <p>{{bodega[0].telefono}}</p>
+        <p>{{bodega[0].email}}</p>
+        @for (item of vinos; track item;let i=$index) {
+                <article class="col-md-2 col-sm-12">
+                    <app-card-vino [attr]="'cardVino' + (i + 1)" [imageCard]="item.image" [title]="item.name"></app-card-vino>
+                </article>
+        }
+    </div>
+</section> 
+}@else if(view=='vino'){
+    <section class="news container mt-5 pb-5">
+        <div class="row">
+                <h1 class="display-6 fw-bold">{{"Vino "+vinosColor[0].color}}</h1>
+            @for (item of vinosColor; track item;let i=$index) {
+                    <article class="col-md-2 col-sm-12">
+                        <app-card-vino [attr]="'cardVino' + (i + 1)" [imageCard]="localhost+item.imagen" [title]="item.nombre"></app-card-vino>
+                    </article>
+            }
+        </div>
+    </section> 
+}
