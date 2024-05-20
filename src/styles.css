@@ -3,10 +3,11 @@ body {
     font-family: 'Roboto', Arial, sans-serif;
     margin-top: 80px;
     color: rgb(85, 84, 84);
+    height:100%;
 }
 
-main{
-    min-height:750px;
+main {
+    min-height: 750px;
 }
 
 a {
@@ -14,7 +15,7 @@ a {
     color: rgb(85, 84, 84);
 }
 
-a:hover{
+a:hover {
     color: rgb(146, 21, 57);
 }
 
@@ -69,11 +70,83 @@ a.nav-link.submenu:hover {
     color: rgb(146, 21, 57);
 }
 
+.card {
+    height: auto;
+    width: 100%;
+    margin-top: 5%;
+    min-height: 400px;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.card-header img {
+    width: 100%;
+    height: 430px;
+    object-fit: contain;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    padding: 20px;
+    min-height: 125px;
+}
+
+.card img {
+    padding: 5%;
+}
+
+.card.vino {
+    height: auto;
+    margin-top: 5%;
+    width: 100%;
+    min-height: 400px;
+}
+
+.card.vino img {
+    width: 100%;
+    height: 400px;
+    object-fit: contain;
+}
+
+.card-body.vino p {
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.card-question {
+    margin-top: 15%;
+    height: 150px;
+    width:100%;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    object-fit: contain;
+}
+.card-question img {
+    margin-top: 10%;
+    width: 40%;
+    object-fit: contain;
+}
+
 .modal {
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.5);
     opacity: 0;
     visibility: hidden;
     transform: scale(1.1);
-    transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+    transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s; 
+}
+
+.modalVino {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(1.1);
+    transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s; 
 }
 
 .show-modal {
@@ -86,8 +159,19 @@ a.nav-link.submenu:hover {
     transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
 }
 
+.show-modal-vino {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1.0);
+    transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+}
+
 .modal-content {
     position: absolute;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: rgb(141, 40, 70);
@@ -96,55 +180,45 @@ a.nav-link.submenu:hover {
     border-radius: 0.5rem;
 }
 
-.card-header img {
-    width: 100%;
-    height: 430px;
-    object-fit: cover;
+.modal-content-vino {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(129, 15, 15);
+    padding: 0.5rem;
+    width: 750px;
+    border-radius: 0.5rem;
 }
 
-div.card {
-    height: auto;
-    background-color: dark;
-    width: 100%;
-    margin-top: 5%;
-    min-height:400px;
+.close-button {
+    float: right;
+    width: 1.5rem;
+    line-height: 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 0.25rem;
+    background-color: lightgray;
 }
 
-div.card.vino {
-    height: auto;
-    background-color: dark;
-
-    margin-top: 5%;
-    
+.close-button:hover {
+    background-color: darkgray;
 }
-
-div.card.vino img{
-width:auto;
-    height:100%;
-}
-
 section.news h1 {
-    margin-top: 7%;
+    margin-top: 5%;
     margin-bottom: 2%;
     font-family: 'Roboto', Arial, sans-serif;
     text-align: center;
 }
 
-#creacion, #bodegas{
+div.description p {
+    text-align: center;
+}
+
+#creacion,
+#bodegas {
     text-align: center;
     font-weight: bold;
-}
-
-div.card img {
-    padding: 5%;
-}
-
-.card-body {
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    padding: 20px;
-    min-height: 125px;
 }
 
 h4 {
@@ -153,10 +227,10 @@ h4 {
 }
 
 footer {
+    min-height: 100px;
     color: rgb(146, 21, 57);
     font-size: 1rem;
     text-align: center;
-
 }
 
 a.more {

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component} from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { DataService } from '../../services/data.service';
 
@@ -12,28 +12,30 @@ import { DataService } from '../../services/data.service';
 
 export class HeaderComponent {
   public constructor(public service: DataService) {
-    this.getDenominaciones(this.urlDenominacion);
-    this.getBodegas(this.urlBodega);
+    this.getDenominaciones(this.url+'denominacion');
+    this.getBodegas(this.url+'bodega');
+    this.getColores(this.url+'color');
+    this.getEspumosos(this.url+'espumoso');
   }
   
-  public urlDenominacion: string = 'http://localhost:8000/denominacion';
-  public urlBodega: string = 'http://localhost:8000/bodega';
+  public url: string = 'http://localhost:8000/';
+
   public denominaciones: { title: string, id: number }[] = [];
   public bodegas: { title: string, id: number }[] = [];
-  public vinos: { title: string, id: number }[] = [{ title: 'Vino tinto', id: 1 }, { title: 'Vino blanco', id: 2 }, { title: 'Vino rosado', id: 3 }]
-  public espumosos: { title: string, id: number }[] = [{ title: 'Cava Brut', id: 1 }, { title: 'Cava Brut Nature', id: 2 }, { title: 'Vino espumoso', id: 3 }]
+  public colores: { title: string, id: number }[] = [];
+  public espumosos: { title: string, id: number }[] = [];
 
   public menu: { route: string, title: string, content: { title: string, id: any }[] }[] = [
-    { route: '/home', title: 'home', content: [] },
+    { route: '/home', title: 'diVino', content: [] },
     { route: '/tuvino', title: 'tuVino', content: [] },
     { route: '/denominaciones', title: 'denominaciones', content: this.denominaciones },
     { route: '/bodegas', title: 'bodegas', content: this.bodegas },
-    { route: '/vinos/color', title: 'vinos', content: this.vinos },
+    { route: '/vinos/color', title: 'vinos', content: this.colores },
     { route: '/vinos/espumosos', title: 'espumosos', content: this.espumosos },
     { route: '/valoraciones', title: 'valoraciones', content: [] }];
 
-  public setSelectedId(id: number) {
-    this.service.setSelectedId(id);
+  public setSelected(id: number,title:string) {
+    this.service.setSelected(id,title);
   }
 
   public getDenominaciones(url: string): void {
@@ -48,6 +50,22 @@ export class HeaderComponent {
     this.service.getResponseBodega(url).subscribe(responseBodega => {
       responseBodega.results.map((element => {
         this.bodegas.push({ title: element.nombre, id: element.id })
+      }))
+    })
+  }
+
+  public getColores(url: string): void {
+    this.service.getResponseGeneral(url).subscribe(responseGeneral => {
+      responseGeneral.results.map((element => {
+        this.colores.push({ title: element.nombre, id: element.id })
+      }))
+    })
+  }
+
+  public getEspumosos(url: string): void {
+    this.service.getResponseGeneral(url).subscribe(responseGeneral => {
+      responseGeneral.results.map((element => {
+        this.espumosos.push({ title: element.nombre, id: element.id })
       }))
     })
   }

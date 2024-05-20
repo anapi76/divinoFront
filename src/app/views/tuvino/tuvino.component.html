@@ -1,1 +1,27 @@
-<p>tuvino works!</p>
+<!-- <main >
+    <app-content [view]="view" [questionVino]="questionVino"></app-content>
+</main>
+ -->
+
+<main>
+    <section class="news container mt-5 pb-5">
+        <div class="row">
+            <div>
+                <h1 class="display-6 fw-bold">Elegimos tu vino</h1>
+            </div>
+            <div class="mt-5 pb-2">
+                <p>{{actualTitle}}</p>
+            </div>
+            @for(item of types;track item;let i=$index){
+            <article class="col-md-2 col-sm-12">
+                <div class="card-question" (click)="selectQuestion(item)">
+                    <img class="card-img-top" src={{item.image}} alt="">
+                    <div class="card-body">
+                        <p class="card-text"><strong>{{item.title}}</strong></p>
+                    </div>
+                </div>
+            </article>
+            }
+        </div>
+    </section>
+</main>

@@ -44,10 +44,22 @@ export class DenominacionesComponent {
       this.bodegasDo = this.denominacion[0].bodegas;
 
       this.descriptions = [];
-      this.descriptions.push({ title: 'Región', description: this.denominacion[0].descripcion, imageCard: "http://localhost:8000/" + this.denominacion[0].imagen });
-      this.descriptions.push({ title: 'Historia', description: this.denominacion[0].historia, imageCard: "http://localhost:8000/" + this.denominacion[0].imagen_historia });
-      this.descriptions.push({ title: 'Tipo de vinos', description: this.denominacion[0].descripcion_vinos, imageCard: "http://localhost:8000/" + this.denominacion[0].logo });
-      this.descriptions.push({ title: 'Uvas permitidas', description: this.denominacion[0].uvas_permitidas.join(', '), imageCard: "http://localhost:8000/" + this.denominacion[0].imagen_uva });
+      this.descriptions.push({ 
+        title: 'Región', 
+        description: this.denominacion[0].descripcion, 
+        imageCard: "http://localhost:8000/" + this.denominacion[0].imagen });
+      this.descriptions.push({ 
+        title: 'Historia', 
+        description: this.denominacion[0].historia, 
+        imageCard: "http://localhost:8000/" + this.denominacion[0].imagen_historia });
+      this.descriptions.push({ 
+        title: 'Tipo de vinos', 
+        description: this.denominacion[0].descripcion_vinos, 
+        imageCard: "http://localhost:8000/" + this.denominacion[0].logo });
+      this.descriptions.push({ 
+        title: 'Uvas permitidas', 
+        description: this.denominacion[0].uvas_permitidas.join(', '), 
+        imageCard: "http://localhost:8000/" + this.denominacion[0].imagen_uva });
     })
   }
 

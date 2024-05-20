@@ -1,0 +1,22 @@
+<div [ngClass]="modalVino">
+    <div class="modal-content-vino">
+        <span (click)="onClose()" class="close-button">×</span>
+        <div class="container">
+            <div class="card">
+                <div class="card-body">
+                    <span class="tag"><strong>{{vino.nombre}}</strong></span>
+                    <span class="tag">{{vino.descripcion}}</span>
+                    <span class="tag"><strong>Nota de cata</strong></span>
+                    <span class="tag">{{vino.notaCata}}</span>
+                    <span class="tag"><strong>Uvas</strong></span>
+                    @for(item of uvas;track item;let i=$index){
+                    <span class="tag">{{ item.porcentaje ? item.porcentaje + '%' : '' }} {{ item.nombre }}</span>
+                    }
+                    <span class="tag"><strong>Maridajes</strong></span>
+                    <span class="tag">{{vino.maridajes}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

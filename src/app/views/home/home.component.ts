@@ -22,7 +22,6 @@ export class HomeComponent {
   
   public isAdult(): void {
     this.modal = 'modal';
-
   }
 
 }

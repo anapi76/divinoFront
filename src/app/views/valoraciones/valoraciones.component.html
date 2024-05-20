@@ -1,1 +1,11 @@
-<p>valoraciones works!</p>
+<main >
+    <section class="news container mt-5 pb-5">
+        <div class="row">
+            <div class="mt-5">
+            <h2>Valora tu vino Favorito</h2>
+            <p>¿Cuál ha sido el último vino que has tomado? ¿Lo recomendarías?</p>
+        </div>
+        <app-form [vinos]="vinos" [puntuaciones]="puntuaciones" (formSubmit)="dataReceived($event)"></app-form>
+        </div>
+    </section>
+</main>

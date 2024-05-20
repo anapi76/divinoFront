@@ -1,11 +1,13 @@
 @if (view=='denominacion') {
 <section class="news container mt-5 pb-5">
     <div class="row">
-        <h1 class="display-6 fw-bold"><a href="{{web}}" title="{{web}}" target="_blank">{{name}}</a></h1>
-        <p id="creacion">{{creacion}}</p>
-        @for (item of bodegasDo; track $index) {
-        <p id="bodegas"><a href={{item.web}} target="_blank" title={{item.nombre}}>{{item.nombre}}</a></p>
-        }
+        <div class="description">
+            <h1 class="display-6 fw-bold"><a href="{{web}}" title="{{web}}" target="_blank">{{name}}</a></h1>
+            <p id="creacion">{{creacion}}</p>
+            @for (item of bodegasDo; track $index) {
+            <p id="bodegas"><a href={{item.web}} target="_blank" title={{item.nombre}}>{{item.nombre}}</a></p>
+            }
+        </div>
         @for(item of descriptions;track item;let i=$index){
         <article class="col-md-3 col-sm-12">
             <app-card [attr]="'card' + (i + 1)" [imageCard]="item.imageCard" [title]="item.title"
@@ -15,41 +17,48 @@
     </div>
 </section>
 }@else if(view=='home'){
-    <section class="news container mt-5 pb-5">
-        <div class="row">
-        </div>
-    </section>
+<section class="news container mt-5 pb-5">
+    <div class="row">
+        <article>
+        </article>
+    </div>
+</section>
 }
 @else if(view=='bodega'){
 <section class="news container mt-5 pb-5">
     <div class="row">
-        @if(bodega[0].web !=null){
-            <h1 class="display-6 fw-bold"><a href="{{bodega[0].web}}" title="{{bodega[0].web}}" target="_blank">{{bodega[0].nombre}}</a></h1>
-        }@else {
-            <h1 class="display-6 fw-bold"><a href="" title="" target="_blank">{{bodega[0].nombre}}</a></h1>  
-        }
-        <p>{{bodega[0].denominacion}}</p>
-        <p>{{bodega[0].direccion}}</p>
-        <p>{{bodega[0].poblacion}}</p>
-        <p>{{bodega[0].provincia}}</p>
-        <p>{{bodega[0].telefono}}</p>
-        <p>{{bodega[0].email}}</p>
+        <div class="description">
+            @if(bodega[0].web !=null){
+            <h1 class="display-6 fw-bold"><a href="{{bodega[0].web}}" title="{{bodega[0].web}}"
+                    target="_blank">{{bodega[0].nombre}}</a></h1>
+            }@else {
+            <h1 class="display-6 fw-bold"><a href="" title="" target="_blank">{{bodega[0].nombre}}</a></h1>
+            }
+            <p><strong>{{bodega[0].denominacion}}</strong></p>
+            <p>{{bodega[0].direccion}}</p>
+            <p>{{bodega[0].poblacion}}, {{bodega[0].provincia}}</p>
+            <p>{{bodega[0].telefono}}</p>
+            <p>{{bodega[0].email}}</p>
+        </div>
         @for (item of vinos; track item;let i=$index) {
-                <article class="col-md-2 col-sm-12">
-                    <app-card-vino [attr]="'cardVino' + (i + 1)" [imageCard]="item.image" [title]="item.name"></app-card-vino>
-                </article>
+        <article class="col-md-2 col-sm-12">
+            <app-card-vino [attr]="'cardVino' + (i + 1)" [imageCard]="item.image" [title]="item.name" [maduracion]="item.maduracion"></app-card-vino>
+        </article>
         }
     </div>
-</section> 
+</section>
 }@else if(view=='vino'){
-    <section class="news container mt-5 pb-5">
-        <div class="row">
-                <h1 class="display-6 fw-bold">{{"Vino "+vinosColor[0].color}}</h1>
-            @for (item of vinosColor; track item;let i=$index) {
-                    <article class="col-md-2 col-sm-12">
-                        <app-card-vino [attr]="'cardVino' + (i + 1)" [imageCard]="localhost+item.imagen" [title]="item.nombre"></app-card-vino>
-                    </article>
-            }
+<section class="news container mt-5 pb-5">
+    <div class="row">
+        <div>
+            <h1 class="display-6 fw-bold">{{title}}</h1>
         </div>
-    </section> 
+        @for (item of vinosColor; track item;let i=$index) {
+        <article class="col-md-3 col-sm-12">
+            <app-card-vino [attr]="'cardVino' + (i + 1)" [imageCard]="localhost+item.imagen" [title]="item.nombre"
+                [vino]="item" (cardClicked)="onCardClicked($event)"></app-card-vino>
+        </article>
+        }
+    </div>
+</section>
 }

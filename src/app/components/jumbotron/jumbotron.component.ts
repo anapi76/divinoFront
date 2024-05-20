@@ -9,7 +9,9 @@ import { Component, Input } from '@angular/core';
   styleUrl: './jumbotron.component.css'
 })
 export class JumbotronComponent {
+
 @Input() image:string ="";
 @Input() bgColor: string='';
 @Input() name: string='';
+
 }

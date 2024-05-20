@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ResultVino } from '../../models/response.interfaceVino';
 
 @Component({
   selector: 'app-card-vino',
@@ -11,7 +12,30 @@ export class CardVinoComponent {
   @Input() title:string='';
   @Input() description:string='';
   @Input() imageCard:string='';
+  @Input() maduracion:string='';
   @Input() attr:string='';
+  @Input() vino:ResultVino={
+    id: 0,
+    nombre: '',
+    descripcion: '',
+    notaCata: '',
+    imagen: '',
+    url: '',
+    color: '',
+    azucar: null,
+    espumoso: null,
+    maduracion: '',
+    sabor: null,
+    cuerpo: null,
+    boca: null,
+    uvas: [],
+    maridajes: [],
+    puntuaciones: []
+  };
 
+  @Output() cardClicked = new EventEmitter<ResultVino>();
+  public openModal(): void {
+    this.cardClicked.emit(this.vino);
+  }
 
 }

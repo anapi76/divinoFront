@@ -1,5 +1,5 @@
 
-<nav class="navbar navbar-expand-md bg-dark fixed-top navbar-dark">
+<nav class="navbar navbar-expand-xl bg-dark fixed-top navbar-dark">
     <div class="container-fluid">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar"
             aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -20,7 +20,7 @@
                         @for(it of item.content;track it;let j=$index){
                         <li class="nav-item">
                             <a class="nav-link submenu" routerLink="{{item.route}}/{{it.id}}"
-                                routerLinkActive="active" (click)="setSelectedId(it.id)">{{it.title}}</a>
+                                routerLinkActive="active" (click)="setSelected(it.id,it.title)">{{it.title}}</a>
                         </li>
                         }
                     </ul>

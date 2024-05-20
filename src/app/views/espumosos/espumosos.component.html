@@ -1,0 +1,4 @@
+<main>
+    <app-content [title]="selectedTitle" [view]="view" [vinosColor]="vinosColor" [vino]="vino" (contentClicked)="onContentClicked($event)"></app-content>
+    <app-modal-vino (closeModal)="onClose($event)" [vino]="vino" [uvas]="vino.uvas" [modalVino]='modalVino'></app-modal-vino>
+</main>

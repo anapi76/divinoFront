@@ -19,7 +19,7 @@ export class BodegasComponent {
   public urlBodega: string = 'http://localhost:8000/bodega/' + this.selectedId;
   public bodega: Result[] = [];
   public vinosDo: Vino[] = [];
-  public vinos: { name: string, image: string, url: string }[] = [];
+  public vinos: { name: string, image: string, maduracion: string }[] = [];
   public view: string = 'bodega';
 
   public constructor(public service: DataService) {
@@ -35,17 +35,13 @@ export class BodegasComponent {
   public getBodega(url: string): void {
     this.service.getResponseBodega(url).subscribe(response => {
       this.bodega = response.results;
-      this.vinos=[];
+      this.vinos = [];
       this.vinosDo = this.bodega[0].vinos;
       this.vinosDo.map(vino => {
         this.service.getResponseVino("http://localhost:8000/" + vino.url).subscribe(responseVino => {
-          this.vinos.push({ name: responseVino.results[0].nombre, image: "http://localhost:8000/" +responseVino.results[0].imagen, url: "http://localhost:8000/" + responseVino.results[0].url });
+          this.vinos.push({ name: responseVino.results[0].nombre, image: "http://localhost:8000/" + responseVino.results[0].imagen, maduracion: responseVino.results[0].maduracion });
         })
       })
     })
   }
-
-
-
-
 }
