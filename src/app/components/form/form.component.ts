@@ -13,22 +13,22 @@ export class FormComponent {
     usuario: new FormControl('', { nonNullable: true }),
     vino: new FormControl('', { nonNullable: true }),
     puntuacion: new FormControl('', { nonNullable: true }),
-    comentario: new FormControl('', { nonNullable: true })
+    comentarios: new FormControl('', { nonNullable: true })
   });
 
-  public form: { usuario: string, vino: string, puntuacion: string, comentario: string } =
-    { usuario: '', vino: '', puntuacion: '', comentario: '' }
+  public form: { usuario: string, vino: string, puntuacion: string, comentarios: string } =
+    { usuario: '', vino: '', puntuacion: '', comentarios: '' }
 
   @Input() vinos: { nombre: string, id: number }[] = [];
   @Input() puntuaciones: { id: number, puntos: number, descripcion: string }[] = [];
 
-  @Output() formSubmit = new EventEmitter<{ usuario: string, vino: string, puntuacion: string, comentario: string }>();
+  @Output() formSubmit = new EventEmitter<{ usuario: string, vino: string, puntuacion: string, comentarios: string }>();
   public onSubmit(): void {
     this.formSubmit.emit({ 
       usuario: this.reactiveForm.getRawValue().usuario, 
       vino: this.reactiveForm.getRawValue().vino, 
       puntuacion: this.reactiveForm.getRawValue().puntuacion, 
-      comentario: this.reactiveForm.getRawValue().comentario });
+      comentarios: this.reactiveForm.getRawValue().comentarios });
     this.reactiveForm.reset();
   }
 

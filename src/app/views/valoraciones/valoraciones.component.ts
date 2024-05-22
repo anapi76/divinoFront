@@ -41,7 +41,6 @@ export class ValoracionesComponent {
   }
 
   public dataReceived(data: any): void {
-    console.log(data);
     this.addPuntuacion(this.urlPuntuacionVino, data);
   }
 }
