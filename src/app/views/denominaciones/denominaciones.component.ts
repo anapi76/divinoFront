@@ -18,7 +18,7 @@ export class DenominacionesComponent {
   public selectedId: number | null = 1;
   public urlDenominacion: string = 'http://localhost:8000/denominacion/' + this.selectedId;
   public denominacion: Result[] = [];
-  public name: string = 'DO Valencia';
+  public name: string = '';
   public web: string | null = '';
   public bodegasDo: Bodegas[] = [];
   public creacion: string | null = '';

@@ -43,6 +43,10 @@ export class DataService {
     return this.http.get<ResponsePuntuacion>(url);
   }
 
+  public getResponseValoracion(url:string): Observable<ResponseValoracion> {
+    return this.http.get<ResponseValoracion>(url);
+  }
+
   public getResponseGeneral(url:string): Observable<ResponseGeneral> {
     return this.http.get<ResponseGeneral>(url);
   }

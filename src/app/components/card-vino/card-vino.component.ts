@@ -28,6 +28,9 @@ export class CardVinoComponent {
     sabor: null,
     cuerpo: null,
     boca: null,
+    bodega:'',
+    do:'',
+    puntos:0,
     uvas: [],
     maridajes: [],
     puntuaciones: []

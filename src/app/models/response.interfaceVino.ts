@@ -21,6 +21,9 @@ export interface ResultVino {
     sabor:        null | string;
     cuerpo:       string | null;
     boca:         string | null;
+    bodega:       string;
+    do:           string;
+    puntos:       number;
     uvas:         Uva[];
     maridajes:    string[];
     puntuaciones: any[];

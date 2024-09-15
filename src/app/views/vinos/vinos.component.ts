@@ -50,13 +50,15 @@ export class VinosComponent {
     sabor: null,
     cuerpo: null,
     boca: null,
+    bodega:'',
+    do:'',
+    puntos:0,
     uvas: [],
     maridajes: [],
     puntuaciones: []
   };
 
   public getVinos(url: string): void {
-    console.log(url);
     this.service.getResponseVino(url).subscribe(response => {
       this.vinosColor=[];
       this.vinosColor = response.results;

@@ -32,6 +32,7 @@ export class HeaderComponent {
     { route: '/bodegas', title: 'bodegas', content: this.bodegas },
     { route: '/vinos/color', title: 'vinos', content: this.colores },
     { route: '/vinos/espumosos', title: 'espumosos', content: this.espumosos },
+    { route: '/ranking', title: 'ranking', content: [] },
     { route: '/valoraciones', title: 'valoraciones', content: [] }];
 
   public setSelected(id: number,title:string) {

@@ -238,6 +238,18 @@ a.more {
     color: rgb(85, 84, 84);
 }
 
+table {
+    width: 100%;
+    border-collapse: collapse; /* Combina los bordes de las celdas */
+    margin: 20px 0; /* Añade un margen superior e inferior */
+}
+
+th, td {
+    border: 1px solid black; /* Define un borde negro de 1px */
+    padding: 8px; /* Añade espacio interior a las celdas */
+    text-align: left; /* Alinea el texto a la izquierda */
+}
+
 
 
 /* 

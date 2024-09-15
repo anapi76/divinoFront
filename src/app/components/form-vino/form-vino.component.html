@@ -1,16 +1,7 @@
 <form (ngSubmit)="onSubmit()" [formGroup]="reactiveForm">
     <div class="form-group mt-2 mb-2">
-        <label for="usuario">Nombre</label>
         <input type="text" class="form-control mt-2 mb-2 w-25" formControlName="usuario"
             placeholder="nombre de usuario">
-    </div>
-    <div class="form-group mt-2 mb-2">
-        <label for="vino">Escoge un vino</label>
-        <select class="form-control mt-2 mb-2 w-25" formControlName="vino">
-            @for(item of vinos;track item;let i=$index){
-            <option value={{item.id}}>{{item.nombre}}</option>
-            }
-        </select>
     </div>
     <div class="form-group mt-2 mb-2">
         <label for="puntuacion">¿Qué puntuación le quieres dar?</label>

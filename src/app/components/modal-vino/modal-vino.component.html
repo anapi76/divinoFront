@@ -4,7 +4,9 @@
         <div class="container">
             <div class="card">
                 <div class="card-body">
-                    <span class="tag"><strong>{{vino.nombre}}</strong></span>
+                    <h3 class="tag"><strong>{{vino.nombre}}</strong></h3>
+                    <span class="tag"><strong>{{vino.bodega}}</strong></span>
+                    <span class="tag"><strong>{{vino.do}}</strong></span>
                     <span class="tag">{{vino.descripcion}}</span>
                     <span class="tag"><strong>Nota de cata</strong></span>
                     <span class="tag">{{vino.notaCata}}</span>
@@ -14,9 +16,11 @@
                     }
                     <span class="tag"><strong>Maridajes</strong></span>
                     <span class="tag">{{vino.maridajes}}</span>
+                    <a routerLink="/valoracionVino/vino.id" class="btn btn-dark" (click)="setSelected(vino.id,vino.nombre)">Valora este vino</a>
+                    <span class="tag"><strong>Puntos</strong></span>
+                    <span class="tag">{{ vino.puntos }}</span>
                 </div>
             </div>
         </div>
     </div>
 </div>
-

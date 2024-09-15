@@ -1,26 +1,38 @@
 import { Component } from '@angular/core';
 import { FormComponent } from '../../components/form/form.component';
+import { Subscription } from 'rxjs';
 import { DataService } from '../../services/data.service';
 import { ResponseValoracion, ResultValoracion } from '../../models/response.interfaceValoracion';
+import { FormVinoComponent } from "../../components/form-vino/form-vino.component";
+
 
 @Component({
-  selector: 'app-valoraciones',
+  selector: 'app-valoracion-vino',
   standalone: true,
-  imports: [FormComponent],
-  templateUrl: './valoraciones.component.html',
-  styleUrl: './valoraciones.component.css'
+  imports: [FormComponent, FormVinoComponent],
+  templateUrl: './valoracion-vino.component.html',
+  styleUrl: './valoracion-vino.component.css'
 })
-export class ValoracionesComponent {
-  public urlPuntuacionVino: string = 'http://localhost:8000/puntuacion/vino/';
-  public urlPuntuacion: string = 'http://localhost:8000/puntuacion';
-  public urlVino: string = 'http://localhost:8000/vino';
+export class ValoracionVinoComponent {
 
-  public vinos: { id: number, nombre: string }[] = [];
+  public idSubscription: Subscription;
+  public selectedId: number | null = 1;
+
+  public urlPuntuacionVino: string = 'http://localhost:8000/puntuacion/vino';
+  public urlPuntuacion: string = 'http://localhost:8000/puntuacion';
+  public urlVino: string = 'http://localhost:8000/vino' + this.selectedId;
+  public vinos: { id: number, nombre: string } = { id: 0, nombre: "" };
   public puntuaciones: { id: number, puntos: number, descripcion: string }[] = [];
   public valoraciones: ResultValoracion[] = [];
 
   public constructor(public service: DataService) {
-    this.getVinos(this.urlVino);
+    this.idSubscription = this.service.getSelectedId().subscribe(id => {
+      this.selectedId = id;
+      if (id !== null) {
+        this.urlVino = 'http://localhost:8000/vino/' + id;
+        this.getVinos(this.urlVino);
+      }
+    });
     this.getPuntuaciones(this.urlPuntuacion);
     this.getValoraciones(this.urlPuntuacionVino);
   }
@@ -28,7 +40,7 @@ export class ValoracionesComponent {
   public getVinos(url: string): void {
     this.service.getResponseVino(url).subscribe(response => {
       response.results.map((element => {
-        this.vinos.push({ nombre: element.nombre, id: element.id });
+        this.vinos = { nombre: element.nombre, id: element.id };
       }))
     })
   }

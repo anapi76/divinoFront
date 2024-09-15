@@ -1,0 +1,26 @@
+<main>
+    <section class="news container mt-5 pb-5">
+        <div class="row">
+            <div class="mt-5 col-md-5 col-sm-12">
+                <h2>Ranking top 10 vinos</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nombre del vino</th>
+                            <th>Puntos</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (item of vinos; track item;let i=$index) {
+                        <tr>
+                            <td>{{item.nombre}}</td>
+                            <td>{{item.puntos}}</td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            
+        </div>
+    </section>
+</main>
