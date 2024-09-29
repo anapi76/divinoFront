@@ -16,7 +16,7 @@ export interface Result {
     cod_postal:   string;
     email:        string;
     telefono:     string;
-    web:          string;
+    web:          null | string;
     url:          string;
     denominacion: String;
     vinos:        Vino[];

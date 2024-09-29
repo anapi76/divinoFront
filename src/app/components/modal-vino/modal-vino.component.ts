@@ -15,7 +15,7 @@ export class ModalVinoComponent {
 
   public constructor(public service: DataService) {}
   
-  public localhost:string='http://localhost:8000/';
+  public localhost:string='http://localhost:8000/api/';
   @Input() uvas: Uva[]= [];
   @Input() modalVino: string = 'modalVino';
   @Input() vino:ResultVino={

@@ -15,7 +15,7 @@ export interface Result {
     web:               null | string;
     imagen:            string;
     imagen_historia:   string;
-    imagen_uva:   string;
+    imagen_uva:        string;
     logo:              string;
     url:               string;
     historia:          string;

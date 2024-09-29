@@ -42,7 +42,8 @@
         </div>
         @for (item of vinos; track item;let i=$index) {
         <article class="col-md-2 col-sm-12">
-            <app-card-vino [attr]="'cardVino' + (i + 1)" [imageCard]="item.image" [title]="item.name" [maduracion]="item.maduracion"></app-card-vino>
+            <app-card-vino [attr]="'cardVino' + (i + 1)" [imageCard]="item.image" [title]="item.name"
+                [maduracion]="item.maduracion"></app-card-vino>
         </article>
         }
     </div>

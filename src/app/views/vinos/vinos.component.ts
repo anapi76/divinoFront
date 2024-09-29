@@ -19,7 +19,7 @@ export class VinosComponent {
     this.idSubscription = this.service.getSelectedId().subscribe(id => {
       this.selectedId = id;
       if (id !== null) {
-        this.urlVinoColor = 'http://localhost:8000/vino/color/' + id;
+        this.urlVinoColor = this.url+'vino/color/' + id;
         this.getVinos(this.urlVinoColor);
       }
     });
@@ -28,10 +28,12 @@ export class VinosComponent {
     });
   }
 
+  public localhost: string = 'http://localhost:8000/'
+  public url: string = this.localhost + 'api/';
   public idSubscription: Subscription;
   public selectedId: number | null = 1;
   public selectedTitle: string | null = '';
-  public urlVinoColor: string = 'http://localhost:8000/vino/color/' + this.selectedId;
+  public urlVinoColor: string = this.url+'vino/color/' + this.selectedId;
   public vinosColor:ResultVino[]=[];
   public view: string = 'vino';
   public modalVino:string='modalVino';

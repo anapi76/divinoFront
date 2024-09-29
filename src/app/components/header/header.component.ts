@@ -18,7 +18,7 @@ export class HeaderComponent {
     this.getEspumosos(this.url+'espumoso');
   }
   
-  public url: string = 'http://localhost:8000/';
+  public url: string = 'http://localhost:8000/api/';
 
   public denominaciones: { title: string, id: number }[] = [];
   public bodegas: { title: string, id: number }[] = [];

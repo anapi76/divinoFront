@@ -17,7 +17,7 @@ export class EspumososComponent {
     this.idSubscription = this.service.getSelectedId().subscribe(id => {
       this.selectedId = id;
       if (id !== null) {
-        this.urlEspumosos = 'http://localhost:8000/vino/espumoso/' + id;
+        this.urlEspumosos = this.url+'vino/espumoso/' + id;
         this.getVinos(this.urlEspumosos);
       }
     });
@@ -25,11 +25,12 @@ export class EspumososComponent {
       this.selectedTitle= title;
     });
   }
+  public url: string = 'http://localhost:8000/api/';
 
   public idSubscription: Subscription;
   public selectedId: number | null = 1;
   public selectedTitle: string | null = '';
-  public urlEspumosos: string = 'http://localhost:8000/vino/espumoso/' + this.selectedId;
+  public urlEspumosos: string = this.url+'vino/espumoso/' + this.selectedId;
   public vinosColor:ResultVino[]=[];
   public view: string = 'vino';
   public modalVino:string='modalVino';

@@ -15,12 +15,13 @@ import { FormVinoComponent } from "../../components/form-vino/form-vino.componen
 })
 export class ValoracionVinoComponent {
 
+  public url: string = 'http://localhost:8000/api/';
   public idSubscription: Subscription;
   public selectedId: number | null = 1;
 
-  public urlPuntuacionVino: string = 'http://localhost:8000/puntuacion/vino';
-  public urlPuntuacion: string = 'http://localhost:8000/puntuacion';
-  public urlVino: string = 'http://localhost:8000/vino' + this.selectedId;
+  public urlValoracion: string = this.url + 'valoracion';
+  public urlPuntuacion: string = this.url + 'puntuacion';
+  public urlVino: string = this.url + 'vino' + this.selectedId;
   public vinos: { id: number, nombre: string } = { id: 0, nombre: "" };
   public puntuaciones: { id: number, puntos: number, descripcion: string }[] = [];
   public valoraciones: ResultValoracion[] = [];
@@ -29,12 +30,12 @@ export class ValoracionVinoComponent {
     this.idSubscription = this.service.getSelectedId().subscribe(id => {
       this.selectedId = id;
       if (id !== null) {
-        this.urlVino = 'http://localhost:8000/vino/' + id;
+        this.urlVino = this.url + 'vino/' + id;
         this.getVinos(this.urlVino);
       }
     });
     this.getPuntuaciones(this.urlPuntuacion);
-    this.getValoraciones(this.urlPuntuacionVino);
+    this.getValoraciones(this.urlValoracion);
   }
 
   public getVinos(url: string): void {
@@ -57,11 +58,12 @@ export class ValoracionVinoComponent {
     })
   }
 
-  public addPuntuacion(url: string, data: ResponseValoracion) {
+  public addValoracion(url: string, data: ResponseValoracion) {
+    console.log(data);
     this.service.createValoracion(url, data).subscribe();
   }
 
   public dataReceived(data: any): void {
-    this.addPuntuacion(this.urlPuntuacionVino, data);
+    this.addValoracion(this.urlValoracion, data);
   }
 }

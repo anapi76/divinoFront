@@ -14,7 +14,7 @@ import {  Content, ContentType } from '../../models/response.interfaceContent';
 export class TuvinoComponent {
 
   public view: string = 'tuVino';
-  public localhost: string = 'http://localhost:8000/';
+  public localhost: string = 'http://localhost:8000/api/';
   public imagesVino = [ "assets/vino_tinto.png","assets/vino_blanco.png","assets/vino_rosado.png"];
   
   public colores: Content = { questionTitle: 'Elige un tipo de vino', types: [] };

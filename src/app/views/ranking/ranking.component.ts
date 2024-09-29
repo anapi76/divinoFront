@@ -9,8 +9,8 @@ import { DataService } from '../../services/data.service';
   styleUrl: './ranking.component.css'
 })
 export class RankingComponent {
-  public urlRanking: string = 'http://localhost:8000/ranking/';
-  public vinos:{id:number,nombre:string,puntos:number}[]=[];
+  public urlRanking: string = 'http://localhost:8000/api/vino/ranking';
+  public vinos: { id: number, nombre: string, puntos: number }[] = [];
 
   public constructor(public service: DataService) {
     this.getRanking(this.urlRanking);
@@ -19,7 +19,7 @@ export class RankingComponent {
   public getRanking(url: string): void {
     this.service.getResponseVino(url).subscribe(response => {
       response.results.map((element => {
-        this.vinos.push({ nombre: element.nombre, id: element.id, puntos:element.puntos});
+        this.vinos.push({ nombre: element.nombre, id: element.id, puntos: element.puntos });
       }))
     })
   }

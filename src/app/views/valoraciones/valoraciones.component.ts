@@ -11,9 +11,10 @@ import { ResponseValoracion, ResultValoracion } from '../../models/response.inte
   styleUrl: './valoraciones.component.css'
 })
 export class ValoracionesComponent {
-  public urlPuntuacionVino: string = 'http://localhost:8000/puntuacion/vino/';
-  public urlPuntuacion: string = 'http://localhost:8000/puntuacion';
-  public urlVino: string = 'http://localhost:8000/vino';
+  public url: string = 'http://localhost:8000/api/';
+  public urlValoracion: string = this.url + 'valoracion';
+  public urlPuntuacion: string = this.url + 'puntuacion';
+  public urlVino: string = this.url + 'vino';
 
   public vinos: { id: number, nombre: string }[] = [];
   public puntuaciones: { id: number, puntos: number, descripcion: string }[] = [];
@@ -22,7 +23,7 @@ export class ValoracionesComponent {
   public constructor(public service: DataService) {
     this.getVinos(this.urlVino);
     this.getPuntuaciones(this.urlPuntuacion);
-    this.getValoraciones(this.urlPuntuacionVino);
+    this.getValoraciones(this.urlValoracion);
   }
 
   public getVinos(url: string): void {
@@ -45,11 +46,11 @@ export class ValoracionesComponent {
     })
   }
 
-  public addPuntuacion(url: string, data: ResponseValoracion) {
+  public addValoracion(url: string, data: ResponseValoracion) {
     this.service.createValoracion(url, data).subscribe();
   }
 
   public dataReceived(data: any): void {
-    this.addPuntuacion(this.urlPuntuacionVino, data);
+    this.addValoracion(this.urlValoracion, data);
   }
 }

@@ -9,7 +9,7 @@ import { FormComponent } from '../form/form.component';
 @Component({
   selector: 'app-content',
   standalone: true,
-  imports: [CardComponent, CardVinoComponent,FormComponent],
+  imports: [CardComponent, CardVinoComponent, FormComponent],
   templateUrl: './content.component.html',
   styleUrl: './content.component.css'
 })
@@ -24,7 +24,7 @@ export class ContentComponent {
   @Input() bodegasDo: Bodegas[] = [];
   @Input() view: string = '';
   @Input() bodega: Result[] = [];
-  @Input() vinos: { name: string, image: string, maduracion: string}[] = [];
+  @Input() vinos: { name: string, image: string, maduracion: string }[] = [];
   @Input() vinosColor: ResultVino[] = [];
   @Input() title: string | null = "";
   @Input() vino: ResultVino = {
@@ -41,9 +41,9 @@ export class ContentComponent {
     sabor: null,
     cuerpo: null,
     boca: null,
-    bodega:'',
-    do:'',
-    puntos:0,
+    bodega: '',
+    do: '',
+    puntos: 0,
     uvas: [],
     maridajes: [],
     puntuaciones: []
@@ -53,6 +53,5 @@ export class ContentComponent {
   onCardClicked(vino: ResultVino) {
     this.contentClicked.emit(vino);
   }
-
 
 }

@@ -13,10 +13,12 @@ import { ContentComponent } from '../../components/content/content.component';
   styleUrl: './denominaciones.component.css'
 })
 export class DenominacionesComponent {
+  public localhost: string = 'http://localhost:8000/'
+  public url: string = this.localhost + 'api/';
 
   public idSubscription: Subscription;
   public selectedId: number | null = 1;
-  public urlDenominacion: string = 'http://localhost:8000/denominacion/' + this.selectedId;
+  public urlDenominacion: string = this.url + 'denominacion/' + this.selectedId;
   public denominacion: Result[] = [];
   public name: string = '';
   public web: string | null = '';
@@ -29,7 +31,7 @@ export class DenominacionesComponent {
     this.idSubscription = this.service.getSelectedId().subscribe(id => {
       this.selectedId = id;
       if (id !== null) {
-        this.urlDenominacion = 'http://localhost:8000/denominacion/' + id;
+        this.urlDenominacion = this.url + 'denominacion/' + id;
         this.getDenominaciones(this.urlDenominacion);
       }
     });
@@ -44,22 +46,26 @@ export class DenominacionesComponent {
       this.bodegasDo = this.denominacion[0].bodegas;
 
       this.descriptions = [];
-      this.descriptions.push({ 
-        title: 'Región', 
-        description: this.denominacion[0].descripcion, 
-        imageCard: "http://localhost:8000/" + this.denominacion[0].imagen });
-      this.descriptions.push({ 
-        title: 'Historia', 
-        description: this.denominacion[0].historia, 
-        imageCard: "http://localhost:8000/" + this.denominacion[0].imagen_historia });
-      this.descriptions.push({ 
-        title: 'Tipo de vinos', 
-        description: this.denominacion[0].descripcion_vinos, 
-        imageCard: "http://localhost:8000/" + this.denominacion[0].logo });
-      this.descriptions.push({ 
-        title: 'Uvas permitidas', 
-        description: this.denominacion[0].uvas_permitidas.join(', '), 
-        imageCard: "http://localhost:8000/" + this.denominacion[0].imagen_uva });
+      this.descriptions.push({
+        title: 'Región',
+        description: this.denominacion[0].descripcion,
+        imageCard: this.localhost + this.denominacion[0].imagen
+      });
+      this.descriptions.push({
+        title: 'Historia',
+        description: this.denominacion[0].historia,
+        imageCard: this.localhost + this.denominacion[0].imagen_historia
+      });
+      this.descriptions.push({
+        title: 'Tipo de vinos',
+        description: this.denominacion[0].descripcion_vinos,
+        imageCard: this.localhost + this.denominacion[0].logo
+      });
+      this.descriptions.push({
+        title: 'Uvas permitidas',
+        description: this.denominacion[0].uvas_permitidas.join(', '),
+        imageCard: this.localhost + this.denominacion[0].imagen_uva
+      });
     })
   }
 

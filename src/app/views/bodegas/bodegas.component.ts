@@ -13,12 +13,14 @@ import { Result, Vino } from '../../models/response.interfaceBodega'
   styleUrl: './bodegas.component.css'
 })
 export class BodegasComponent {
+  public localhost: string = 'http://localhost:8000/'
+  public url: string = this.localhost + 'api/';
 
   public idSubscription: Subscription;
   public selectedId: number | null = 1;
-  public urlBodega: string = 'http://localhost:8000/bodega/' + this.selectedId;
+  public urlBodega: string = this.url + 'bodega/' + this.selectedId;
   public bodega: Result[] = [];
-  public vinosDo: Vino[] = [];
+  public vinosBodega: Vino[] = [];
   public vinos: { name: string, image: string, maduracion: string }[] = [];
   public view: string = 'bodega';
 
@@ -26,20 +28,21 @@ export class BodegasComponent {
     this.idSubscription = this.service.getSelectedId().subscribe(id => {
       this.selectedId = id;
       if (id !== null) {
-        this.urlBodega = 'http://localhost:8000/bodega/' + id;
+        this.urlBodega = this.url + 'bodega/' + id;
         this.getBodega(this.urlBodega);
       }
     });
+    console.log(this.vinos);
   }
 
   public getBodega(url: string): void {
     this.service.getResponseBodega(url).subscribe(response => {
       this.bodega = response.results;
       this.vinos = [];
-      this.vinosDo = this.bodega[0].vinos;
-      this.vinosDo.map(vino => {
-        this.service.getResponseVino("http://localhost:8000/" + vino.url).subscribe(responseVino => {
-          this.vinos.push({ name: responseVino.results[0].nombre, image: "http://localhost:8000/" + responseVino.results[0].imagen, maduracion: responseVino.results[0].maduracion });
+      this.vinosBodega = this.bodega[0].vinos;
+      this.vinosBodega.map(vino => {
+        this.service.getResponseVino(this.url + vino.url).subscribe(responseVino => {
+          this.vinos.push({ name: responseVino.results[0].nombre, image: this.localhost + responseVino.results[0].imagen, maduracion: responseVino.results[0].maduracion });
         })
       })
     })
