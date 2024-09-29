@@ -11,6 +11,9 @@ This repository contains the Divino frontend, a platform developed with Angular 
 - RxJS - Used for reactive programming and observables
 - Angular CLI - For commands and component generation
 - Node.js & npm - For dependency management
+- Visual Studio Code
+- GitHub repository
+  https://github.com/anapi76/divinoFront.git
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
